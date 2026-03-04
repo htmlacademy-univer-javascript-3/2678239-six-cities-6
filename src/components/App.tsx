@@ -1,7 +1,11 @@
 import MainPage from '../pages/MainPage.tsx';
 
-export default function App() {
+type AppProps = {
+  placesCount: number;
+}
+
+export default function App({placesCount}: AppProps) {
   return (
-    <MainPage />
+    <MainPage placesCount={placesCount}/>
   );
 }
