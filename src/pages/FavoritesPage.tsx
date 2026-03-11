@@ -1,4 +1,4 @@
-export default function FavouritesPage() {
+export default function FavoritesPage() {
   return (
     <div className="page">
       <header className="header">
