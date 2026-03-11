@@ -6,18 +6,20 @@ import FavoritesPage from '../pages/FavoritesPage.tsx';
 import LoginPage from '../pages/LoginPage.tsx';
 import OfferPage from '../pages/OfferPage.tsx';
 import PrivateRoute from './PrivateRoute.tsx';
+import {Offer} from '../types/offer.ts';
 
 type AppProps = {
   placesCount: number;
+  offers: Offer[];
 }
 
-export default function App({placesCount}: AppProps) {
+export default function App({placesCount, offers}: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage placesCount={placesCount}/>}
+          element={<MainPage placesCount={placesCount} offers={offers}/>}
         />
         <Route
           path={AppRoute.Favorites}

@@ -1,11 +1,13 @@
 import Card from '../components/Card.tsx';
 import Logo from '../components/Logo.tsx';
+import {Offer} from '../types/offer.ts';
 
 type MainPageProps = {
   placesCount: number;
+  offers: Offer[];
 }
 
-export default function MainPage({placesCount}: MainPageProps) {
+export default function MainPage({placesCount, offers}: MainPageProps) {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -93,11 +95,7 @@ export default function MainPage({placesCount}: MainPageProps) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <Card photoSrc={'img/apartment-01.jpg'}/>
-                <Card photoSrc={'img/room.jpg'}/>
-                <Card photoSrc={'img/apartment-02.jpg'} />
-                <Card photoSrc={'img/apartment-03.jpg'} />
-                <Card photoSrc={'img/room.jpg'} />
+                {offers.map((offer) => <Card key={offer.id} offer={offer} />)}
               </div>
             </section>
             <div className="cities__right-section">
