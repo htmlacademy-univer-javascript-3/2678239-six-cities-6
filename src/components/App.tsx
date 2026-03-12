@@ -7,6 +7,7 @@ import LoginPage from '../pages/LoginPage.tsx';
 import OfferPage from '../pages/OfferPage.tsx';
 import PrivateRoute from './PrivateRoute.tsx';
 import {Offer} from '../types/offer.ts';
+import FavoritesEmptyPage from '../pages/FavoritesEmptyPage.tsx';
 
 type AppProps = {
   placesCount: number;
@@ -14,6 +15,8 @@ type AppProps = {
 }
 
 export default function App({placesCount, offers}: AppProps) {
+  const favoriteOffers = offers.filter((o) => o.isFavorite);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -25,9 +28,11 @@ export default function App({placesCount, offers}: AppProps) {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesPage/>
+              {favoriteOffers.length > 0
+                ? <FavoritesPage favouriteOffers={favoriteOffers}/>
+                : <FavoritesEmptyPage/>}
             </PrivateRoute>
           }
         />
