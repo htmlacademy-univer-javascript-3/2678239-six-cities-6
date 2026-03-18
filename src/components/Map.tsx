@@ -1,4 +1,4 @@
-import {Location} from '../types/offer.ts';
+import {Location, Offer} from '../types/offer.ts';
 import useMap from '../hooks/useMap.ts';
 import {useEffect, useRef} from 'react';
 import {Icon, layerGroup, Marker} from 'leaflet';
@@ -7,8 +7,8 @@ import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
   mapCenter: Location;
-  points: Location[];
-  selectedPoint: Location | null;
+  points: Offer[];
+  selectedPoint: Offer | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -26,7 +26,7 @@ const currentCustomIcon = new Icon({
 
 export default function Map(props: MapProps) {
   const {mapCenter, points, selectedPoint} = props;
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLDivElement | null>(null);
   const map = useMap(mapRef, mapCenter);
 
   useEffect(() => {
@@ -34,13 +34,13 @@ export default function Map(props: MapProps) {
       const markerLayer = layerGroup().addTo(map);
       points.forEach((point) => {
         const marker = new Marker({
-          lat: point.latitude,
-          lng: point.longitude
+          lat: point.location.latitude,
+          lng: point.location.longitude
         });
 
         marker
           .setIcon(
-            selectedPoint !== null && point === selectedPoint
+            selectedPoint !== null && point.id === selectedPoint.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
