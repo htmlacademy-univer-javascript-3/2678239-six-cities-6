@@ -26,7 +26,7 @@ const currentCustomIcon = new Icon({
 
 export default function Map(props: MapProps) {
   const {mapCenter, points, selectedPoint} = props;
-  const mapRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
   const map = useMap(mapRef, mapCenter);
 
   useEffect(() => {
