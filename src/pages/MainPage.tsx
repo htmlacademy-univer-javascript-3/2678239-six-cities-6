@@ -4,12 +4,10 @@ import OffersList from '../components/cards/OffersList.tsx';
 import Map from '../components/Map.tsx';
 
 type MainPageProps = {
-  placesCount: number;
   offers: Offer[];
 }
 
-export default function MainPage({placesCount, offers}: MainPageProps) {
-  const points = offers.map((o) => o.city.location);
+export default function MainPage({offers}: MainPageProps) {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -80,7 +78,7 @@ export default function MainPage({placesCount, offers}: MainPageProps) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -100,7 +98,7 @@ export default function MainPage({placesCount, offers}: MainPageProps) {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" style={{ backgroundImage: 'none' }}>
-                <Map mapCenter={points[0]} points={points} selectedPoint={null}/>
+                <Map mapCenter={offers[0].location} points={offers} selectedPoint={null}/>
               </section>
             </div>
           </div>

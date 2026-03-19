@@ -10,11 +10,10 @@ import {Offer} from '../types/offer.ts';
 import FavoritesEmptyPage from '../pages/FavoritesEmptyPage.tsx';
 
 type AppProps = {
-  placesCount: number;
   offers: Offer[];
 }
 
-export default function App({placesCount, offers}: AppProps) {
+export default function App({offers}: AppProps) {
   const favoriteOffers = offers.filter((o) => o.isFavorite);
 
   return (
@@ -22,7 +21,7 @@ export default function App({placesCount, offers}: AppProps) {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage placesCount={placesCount} offers={offers}/>}
+          element={<MainPage offers={offers}/>}
         />
         <Route
           path={AppRoute.Favorites}
