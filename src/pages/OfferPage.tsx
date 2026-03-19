@@ -143,7 +143,7 @@ export default function OfferPage({comments}: OfferPageProps) {
               </section>
             </div>
           </div>
-          <section className="offer__map map">
+          <section className="offer__map map" style={{ backgroundImage: 'none' }}>
             <Map mapCenter={neighbourPoints[0].location} points={neighbourPoints} selectedPoint={null}/>
           </section>
         </section>

@@ -16,7 +16,7 @@ export default function OfferCard({offer, onHover, isNeighbour}: CardProps) {
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${isNeighbour ? 'near-places__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`} onClick={() => window.scrollTo(0, 0)}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
