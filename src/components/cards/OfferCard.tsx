@@ -4,18 +4,20 @@ import {Link} from 'react-router-dom';
 type CardProps = {
   offer: Offer;
   onHover: () => void;
+  isNeighbour?: boolean;
 }
 
-export default function OfferCard({offer, onHover}: CardProps) {
+
+export default function OfferCard({offer, onHover, isNeighbour}: CardProps) {
   return (
-    <article className="cities__card place-card" onMouseEnter={() => onHover()}>
+    <article className={`${isNeighbour ? 'near-places__card' : 'cities__card'} place-card`} onMouseEnter={() => onHover()}>
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${offer.id}`}>
+        <Link to={`/offer/${offer.id}`} onClick={() => window.scrollTo(0, 0)}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
