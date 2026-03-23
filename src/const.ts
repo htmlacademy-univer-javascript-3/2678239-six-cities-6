@@ -5,6 +5,8 @@ export enum AppRoute {
   Root = '/',
 }
 
+export const MAX_NEIGHBOUR_POINTS = 3;
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
