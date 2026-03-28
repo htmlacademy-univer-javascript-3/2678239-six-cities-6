@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {Offer} from '../types/offer.ts';
 import {setCity, setOffers} from './action.ts';
+import {offers} from '../mocks/offers.ts';
 
 type AppState = {
   city: string;
@@ -9,7 +10,7 @@ type AppState = {
 
 const initialState: AppState = {
   city: 'Paris',
-  offers: [],
+  offers,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
