@@ -32,6 +32,11 @@ export default function Map(props: MapProps) {
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
+      map.setView({
+        lat: mapCenter.latitude,
+        lng: mapCenter.longitude
+      });
+
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.location.latitude,
