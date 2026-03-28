@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
 import {setCity} from '../state/action.ts';
 import {filterOffersByCity} from '../utils.ts';
 import {DEFAULT_LOCATION} from '../const.ts';
+import MainEmptyPage from './MainEmptyPage.tsx';
 
 
 export default function MainPage() {
@@ -13,6 +14,11 @@ export default function MainPage() {
   const city = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
   const offersByCity = filterOffersByCity(offers, city);
+
+  if (offersByCity.length === 0) {
+    return <MainEmptyPage />;
+  }
+
   return (
     <div className="page page--gray page--main">
       <header className="header">

@@ -1,6 +1,12 @@
 import Logo from '../components/Logo.tsx';
+import CitiesList from '../components/CitiesList.tsx';
+import {setCity} from '../state/action.ts';
+import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
+
 
 export default function MainEmptyPage() {
+  const city = useAppSelector((state) => state.city);
+  const dispatch = useAppDispatch();
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -32,49 +38,13 @@ export default function MainEmptyPage() {
 
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+        <CitiesList selectedCity={city} onClick={(value) => dispatch(setCity(value))} />
         <div className="cities">
           <div className="cities__places-container cities__places-container--empty container">
             <section className="cities__no-places">
               <div className="cities__status-wrapper tabs__content">
                 <b className="cities__status">No places to stay available</b>
-                <p className="cities__status-description">We could not find any property available at the moment in
-                  Dusseldorf
+                <p className="cities__status-description">We could not find any property available at the moment in {city}
                 </p>
               </div>
             </section>
