@@ -1,13 +1,16 @@
 import Footer from '../components/Footer.tsx';
 import Logo from '../components/Logo.tsx';
-import {Offer} from '../types/offer.ts';
 import FavoritesList from '../components/favorite-cards/FavoritesList.tsx';
+import {useAppSelector} from '../hooks/store.ts';
+import FavoritesEmptyPage from './FavoritesEmptyPage.tsx';
 
-type FavoritesPageProps = {
-  favouriteOffers: Offer[];
-}
 
-export default function FavoritesPage({ favouriteOffers }: FavoritesPageProps) {
+export default function FavoritesPage() {
+  const offers = useAppSelector((state) => state.offers);
+  const favoriteOffers = offers.filter((o) => o.isFavorite);
+  if (favoriteOffers.length === 0) {
+    return <FavoritesEmptyPage />;
+  }
   return (
     <div className="page">
       <header className="header">
@@ -41,7 +44,7 @@ export default function FavoritesPage({ favouriteOffers }: FavoritesPageProps) {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-            <FavoritesList offers={favouriteOffers} />
+            <FavoritesList offers={favoriteOffers} />
           </section>
         </div>
       </main>

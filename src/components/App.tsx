@@ -6,23 +6,16 @@ import FavoritesPage from '../pages/FavoritesPage.tsx';
 import LoginPage from '../pages/LoginPage.tsx';
 import OfferPage from '../pages/OfferPage.tsx';
 import PrivateRoute from './PrivateRoute.tsx';
-import {Offer} from '../types/offer.ts';
-import FavoritesEmptyPage from '../pages/FavoritesEmptyPage.tsx';
 import {comments} from '../mocks/comments.ts';
 
-type AppProps = {
-  offers: Offer[];
-}
 
-export default function App({offers}: AppProps) {
-  const favoriteOffers = offers.filter((o) => o.isFavorite);
-
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage offers={offers}/>}
+          element={<MainPage/>}
         />
         <Route
           path={AppRoute.Favorites}
@@ -30,9 +23,7 @@ export default function App({offers}: AppProps) {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              {favoriteOffers.length > 0
-                ? <FavoritesPage favouriteOffers={favoriteOffers}/>
-                : <FavoritesEmptyPage/>}
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
