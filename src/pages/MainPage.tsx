@@ -4,11 +4,12 @@ import Map from '../components/Map.tsx';
 import CitiesList from '../components/CitiesList.tsx';
 import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
 import {setCity} from '../state/action.ts';
-import {filterOffersByCity, sortOffers} from '../utils.ts';
 import MainEmptyPage from './MainEmptyPage.tsx';
 import CardsSort from '../components/cards/CardsSort.tsx';
 import {useState} from 'react';
 import {SortTypes} from '../types/sort.ts';
+import {filterOffersByCity} from '../utils/utils.ts';
+import {sortOffers} from '../utils/sort.ts';
 
 
 export default function MainPage() {

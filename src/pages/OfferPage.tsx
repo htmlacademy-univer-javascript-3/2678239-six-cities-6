@@ -1,7 +1,6 @@
 import Logo from '../components/Logo.tsx';
 import ReviewForm from '../components/reviews/ReviewForm.tsx';
 import {useParams} from 'react-router-dom';
-import {findItemById} from '../utils.ts';
 import {detailedOffers, offers} from '../mocks/offers.ts';
 import PageNotFound from './PageNotFound.tsx';
 import ReviewsList from '../components/reviews/ReviewsList.tsx';
@@ -9,6 +8,7 @@ import {Comment} from '../types/comment.ts';
 import Map from '../components/Map.tsx';
 import {MAX_NEIGHBOUR_POINTS} from '../const.ts';
 import OffersList from '../components/cards/OffersList.tsx';
+import {findItemById} from '../utils/utils.ts';
 
 type OfferPageProps = {
   comments: Comment[];
