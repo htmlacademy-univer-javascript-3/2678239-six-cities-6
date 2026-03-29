@@ -15,6 +15,7 @@ import {sortOffers} from '../utils/sort.ts';
 export default function MainPage() {
   const [sortType, setSortType] = useState(SortTypes.Popular);
 
+  const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const dispatch = useAppDispatch();
   const city = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
@@ -65,7 +66,7 @@ export default function MainPage() {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" style={{ backgroundImage: 'none' }}>
-                <Map mapCenter={offersByCity[0].location} points={offersByCity} selectedPoint={null}/>
+                <Map mapCenter={offersByCity[0].location} points={offersByCity} selectedPoint={selectedOffer}/>
               </section>
             </div>
           </div>

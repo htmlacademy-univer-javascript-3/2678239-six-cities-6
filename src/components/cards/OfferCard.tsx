@@ -10,7 +10,7 @@ type CardProps = {
 
 export default function OfferCard({offer, onHover, isNeighbour}: CardProps) {
   return (
-    <article className={`${isNeighbour ? 'near-places__card' : 'cities__card'} place-card`} onMouseEnter={() => onHover()}>
+    <article className={`${isNeighbour ? 'near-places__card' : 'cities__card'} place-card`} onMouseEnter={onHover}>
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
