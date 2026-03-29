@@ -1,5 +1,5 @@
 import Logo from '../components/Logo.tsx';
-import ReviewForm from '../components/ReviewForm.tsx';
+import ReviewForm from '../components/reviews/ReviewForm.tsx';
 import {useParams} from 'react-router-dom';
 import {findItemById} from '../utils.ts';
 import {detailedOffers, offers} from '../mocks/offers.ts';
