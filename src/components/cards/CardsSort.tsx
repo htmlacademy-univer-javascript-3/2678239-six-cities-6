@@ -4,15 +4,11 @@ import {SortTypeNames} from '../../const.ts';
 
 type CardSortProps = {
   onClick: (type: SortTypes) => void;
+  selectedSort: SortTypes;
 }
 
-export default function CardsSort({onClick}: CardSortProps) {
-  const [selectedSort, setSelectedSort] = useState<SortTypes>(SortTypes.Popular);
+export default function CardsSort({onClick, selectedSort}: CardSortProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClick = (type: SortTypes) => {
-    setSelectedSort(type);
-    onClick(type);
-  };
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -27,7 +23,7 @@ export default function CardsSort({onClick}: CardSortProps) {
         {Array.from(SortTypeNames.entries()).map(([type, title]) => (
           <li
             key={type}
-            onClick={() => handleClick(type)}
+            onClick={() => onClick(type)}
             className={`places__option ${selectedSort === type ? 'places__option--active' : ''}`}
             tabIndex={0}
           >

@@ -3,18 +3,15 @@ import OffersList from '../components/cards/OffersList.tsx';
 import Map from '../components/Map.tsx';
 import CitiesList from '../components/CitiesList.tsx';
 import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
-import {setCity} from '../state/action.ts';
+import {setCity, setSort} from '../state/action.ts';
 import MainEmptyPage from './MainEmptyPage.tsx';
 import CardsSort from '../components/cards/CardsSort.tsx';
-import {useState} from 'react';
-import {SortTypes} from '../types/sort.ts';
 import {filterOffersByCity} from '../utils/utils.ts';
 import {sortOffers} from '../utils/sort.ts';
 
 
 export default function MainPage() {
-  const [sortType, setSortType] = useState(SortTypes.Popular);
-
+  const sortType = useAppSelector((state) => state.sortType);
   const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const dispatch = useAppDispatch();
   const city = useAppSelector((state) => state.city);
@@ -61,7 +58,7 @@ export default function MainPage() {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offersByCity.length} places to stay in {city}</b>
-              <CardsSort onClick={(type) => setSortType(type)}/>
+              <CardsSort selectedSort={sortType} onClick={(type) => dispatch(setSort(type))}/>
               <OffersList offers={sortedOffers}/>
             </section>
             <div className="cities__right-section">
