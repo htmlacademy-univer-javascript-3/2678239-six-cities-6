@@ -19,7 +19,17 @@ export default function OffersList({offers, isNeighbour = false} : CardListProps
 
   return (
     <div className={`${containerClassName} places__list`}>
-      {offers.map((offer) => <OfferCard key={offer.id} offer={offer} isNeighbour={isNeighbour} onHover={() => dispatch((selectOffer(offer)))}/>)}
+      {offers.map((offer) =>
+        (
+          <
+            OfferCard
+            key={offer.id}
+            offer={offer}
+            isNeighbour={isNeighbour}
+            onHover={() => dispatch((selectOffer(offer)))}
+            onLeave={() => dispatch(selectOffer(null))}
+          />
+        ))}
     </div>
   );
 }

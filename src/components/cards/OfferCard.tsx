@@ -4,13 +4,14 @@ import {Link} from 'react-router-dom';
 type CardProps = {
   offer: Offer;
   onHover: () => void;
+  onLeave: () => void;
   isNeighbour?: boolean;
 }
 
 
-export default function OfferCard({offer, onHover, isNeighbour}: CardProps) {
+export default function OfferCard({offer, onHover, onLeave, isNeighbour}: CardProps) {
   return (
-    <article className={`${isNeighbour ? 'near-places__card' : 'cities__card'} place-card`} onMouseEnter={onHover}>
+    <article className={`${isNeighbour ? 'near-places__card' : 'cities__card'} place-card`} onMouseEnter={onHover} onMouseLeave={onLeave}>
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
