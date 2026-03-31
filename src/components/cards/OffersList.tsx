@@ -1,6 +1,7 @@
 import OfferCard from './OfferCard.tsx';
 import {Offer} from '../../types/offer.ts';
-import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {selectOffer} from '../../state/action.ts';
 
 type CardListProps = {
   offers: Offer[];
@@ -9,7 +10,7 @@ type CardListProps = {
 
 
 export default function OffersList({offers, isNeighbour = false} : CardListProps) {
-  const [, setActiveOfferId] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
   const containerClassName = isNeighbour
     ? 'near-places__list'
@@ -18,7 +19,17 @@ export default function OffersList({offers, isNeighbour = false} : CardListProps
 
   return (
     <div className={`${containerClassName} places__list`}>
-      {offers.map((offer) => <OfferCard key={offer.id} offer={offer} isNeighbour={isNeighbour} onHover={() => setActiveOfferId(offer.id)}/>)}
+      {offers.map((offer) =>
+        (
+          <
+            OfferCard
+            key={offer.id}
+            offer={offer}
+            isNeighbour={isNeighbour}
+            onHover={() => dispatch((selectOffer(offer)))}
+            onLeave={() => dispatch(selectOffer(null))}
+          />
+        ))}
     </div>
   );
 }

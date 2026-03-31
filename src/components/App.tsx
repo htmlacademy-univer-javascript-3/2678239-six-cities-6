@@ -1,12 +1,12 @@
 import MainPage from '../pages/MainPage.tsx';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../const.ts';
 import PageNotFound from '../pages/PageNotFound.tsx';
 import FavoritesPage from '../pages/FavoritesPage.tsx';
 import LoginPage from '../pages/LoginPage.tsx';
 import OfferPage from '../pages/OfferPage.tsx';
 import PrivateRoute from './PrivateRoute.tsx';
 import {comments} from '../mocks/comments.ts';
+import {AppRoute, AuthorizationStatus} from '../types/app.ts';
 
 
 export default function App() {

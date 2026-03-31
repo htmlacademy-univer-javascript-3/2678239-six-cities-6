@@ -1,5 +1,5 @@
 import {Comment} from '../../types/comment.ts';
-import {humanizeDateDay, humanizeDateMonth} from '../../utils.ts';
+import {humanizeDateDay, humanizeDateMonth} from '../../utils/date.ts';
 
 type ReviewProps = {
   comment: Comment;
