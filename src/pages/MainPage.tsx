@@ -9,6 +9,8 @@ import CardsSort from '../components/cards/CardsSort.tsx';
 import {filterOffersByCity} from '../utils/utils.ts';
 import {sortOffers} from '../utils/sort.ts';
 import '../../markup/css/spinner.css';
+import {useEffect} from 'react';
+import {loadOffersAction} from '../store/apiActions.ts';
 
 export default function MainPage() {
   const sortType = useAppSelector((state) => state.sortType);
@@ -20,6 +22,11 @@ export default function MainPage() {
   const offers = useAppSelector((state) => state.offers);
   const offersByCity = filterOffersByCity(offers, city);
   const sortedOffers = sortOffers(offersByCity, sortType);
+
+  useEffect(() => {
+    dispatch(loadOffersAction());
+  }, [dispatch]);
+
   if (!isOffersLoading && offersByCity.length === 0) {
     return <MainEmptyPage />;
   }
