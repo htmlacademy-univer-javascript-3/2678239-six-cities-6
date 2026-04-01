@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {Offer} from '../types/offer.ts';
-import {selectOffer, setCity, setOffers, setSort} from './action.ts';
+import {selectOffer, setCity, setOffers, setOffersLoadingStatus, setSort} from './action.ts';
 import {SortTypes} from '../types/sort.ts';
 
 type AppState = {
@@ -8,6 +8,7 @@ type AppState = {
   offers: Offer[];
   selectedOffer: Offer | null;
   sortType: SortTypes;
+  isOffersLoading: boolean;
 }
 
 const initialState: AppState = {
@@ -15,6 +16,7 @@ const initialState: AppState = {
   offers: [],
   selectedOffer: null,
   sortType: SortTypes.Popular,
+  isOffersLoading: true,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -30,5 +32,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setSort, (state, action) => {
       state.sortType = action.payload;
+    })
+    .addCase(setOffersLoadingStatus, (state, action) => {
+      state.isOffersLoading = action.payload;
     });
 });
