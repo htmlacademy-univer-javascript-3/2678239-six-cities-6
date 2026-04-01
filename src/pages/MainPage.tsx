@@ -3,7 +3,7 @@ import OffersList from '../components/cards/OffersList.tsx';
 import Map from '../components/Map.tsx';
 import CitiesList from '../components/CitiesList.tsx';
 import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
-import {setCity, setSort} from '../state/action.ts';
+import {setCity, setSort} from '../store/action.ts';
 import MainEmptyPage from './MainEmptyPage.tsx';
 import CardsSort from '../components/cards/CardsSort.tsx';
 import {filterOffersByCity} from '../utils/utils.ts';

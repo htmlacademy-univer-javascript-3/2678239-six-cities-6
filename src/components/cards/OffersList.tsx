@@ -1,7 +1,7 @@
 import OfferCard from './OfferCard.tsx';
 import {Offer} from '../../types/offer.ts';
 import {useDispatch} from 'react-redux';
-import {selectOffer} from '../../state/action.ts';
+import {selectOffer} from '../../store/action.ts';
 
 type CardListProps = {
   offers: Offer[];

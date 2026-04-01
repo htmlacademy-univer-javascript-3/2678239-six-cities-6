@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App.tsx';
 import {Provider} from 'react-redux';
-import {store} from './state';
+import {store} from './store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
