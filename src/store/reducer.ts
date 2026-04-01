@@ -1,7 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {Offer} from '../types/offer.ts';
 import {selectOffer, setCity, setOffers, setSort} from './action.ts';
-import {offers} from '../mocks/offers.ts';
 import {SortTypes} from '../types/sort.ts';
 
 type AppState = {
@@ -13,7 +12,7 @@ type AppState = {
 
 const initialState: AppState = {
   city: 'Paris',
-  offers,
+  offers: [],
   selectedOffer: null,
   sortType: SortTypes.Popular,
 };

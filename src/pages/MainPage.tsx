@@ -17,7 +17,7 @@ export default function MainPage() {
   const city = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
   const offersByCity = filterOffersByCity(offers, city);
-  const sortedOffers = sortOffers(offers, sortType);
+  const sortedOffers = sortOffers(offersByCity, sortType);
   if (offersByCity.length === 0) {
     return <MainEmptyPage />;
   }
