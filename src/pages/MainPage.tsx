@@ -69,7 +69,7 @@ export default function MainPage() {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map" style={{ backgroundImage: 'none' }}>
-                  {!isOffersLoading && <Map mapCenter={offersByCity[0].location} points={offersByCity} selectedPoint={selectedOffer}/>}
+                  <Map mapCenter={selectedOffer?.location || offersByCity[0].location} points={offersByCity} selectedPoint={selectedOffer}/>
                 </section>
               </div>
             </div>
