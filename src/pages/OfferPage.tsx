@@ -1,14 +1,14 @@
 import Logo from '../components/Logo.tsx';
 import ReviewForm from '../components/reviews/ReviewForm.tsx';
 import {useParams} from 'react-router-dom';
-import {detailedOffers, offers} from '../mocks/offers.ts';
+import {detailedOffers} from '../mocks/offers.ts';
 import PageNotFound from './PageNotFound.tsx';
 import ReviewsList from '../components/reviews/ReviewsList.tsx';
 import {Comment} from '../types/comment.ts';
 import Map from '../components/Map.tsx';
 import {MAX_NEIGHBOUR_POINTS} from '../const.ts';
 import OffersList from '../components/cards/OffersList.tsx';
-import {findItemById} from '../utils/utils.ts';
+import {filterOffersByCity, findItemById} from '../utils/utils.ts';
 import {useAppSelector} from '../hooks/store.ts';
 
 type OfferPageProps = {
@@ -16,7 +16,10 @@ type OfferPageProps = {
 }
 
 export default function OfferPage({comments}: OfferPageProps) {
-  const neighbourPoints = offers.slice(0, MAX_NEIGHBOUR_POINTS);
+  const offers = useAppSelector((state) => state.offers);
+  const city = useAppSelector((state) => state.city);
+  const offersByCity = filterOffersByCity(offers, city);
+  const neighbourPoints = offersByCity.slice(0, MAX_NEIGHBOUR_POINTS);
 
   const selectedOffer = useAppSelector((state) => state.selectedOffer);
   const params = useParams();
