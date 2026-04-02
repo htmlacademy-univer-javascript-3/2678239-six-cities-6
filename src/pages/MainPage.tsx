@@ -24,8 +24,10 @@ export default function MainPage() {
   const sortedOffers = sortOffers(offersByCity, sortType);
 
   useEffect(() => {
-    dispatch(loadOffersAction());
-  }, [dispatch]);
+    if (isOffersLoading) {
+      dispatch(loadOffersAction());
+    }
+  }, [dispatch, isOffersLoading]);
 
   if (!isOffersLoading && offersByCity.length === 0) {
     return <MainEmptyPage />;
