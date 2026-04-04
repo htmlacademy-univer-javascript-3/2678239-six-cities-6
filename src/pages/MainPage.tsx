@@ -1,4 +1,3 @@
-import Logo from '../components/Logo.tsx';
 import OffersList from '../components/cards/OffersList.tsx';
 import Map from '../components/Map.tsx';
 import CitiesList from '../components/CitiesList.tsx';
@@ -11,6 +10,7 @@ import {sortOffers} from '../utils/sort.ts';
 import '../../markup/css/spinner.css';
 import {useEffect} from 'react';
 import {loadOffersAction} from '../store/apiActions.ts';
+import Logo from '../components/Logo.tsx';
 
 export default function MainPage() {
   const sortType = useAppSelector((state) => state.sortType);
@@ -24,10 +24,8 @@ export default function MainPage() {
   const sortedOffers = sortOffers(offersByCity, sortType);
 
   useEffect(() => {
-    if (isOffersLoading) {
-      dispatch(loadOffersAction());
-    }
-  }, [dispatch, isOffersLoading]);
+    dispatch(loadOffersAction());
+  }, [dispatch]);
 
   if (!isOffersLoading && offersByCity.length === 0) {
     return <MainEmptyPage />;
@@ -39,7 +37,7 @@ export default function MainPage() {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo />
+              <Logo/>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -77,8 +75,10 @@ export default function MainPage() {
                 <OffersList offers={sortedOffers}/>
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map" style={{ backgroundImage: 'none' }}>
-                  <Map mapCenter={selectedOffer?.location || offersByCity[0].location} points={offersByCity} selectedPoint={selectedOffer}/>
+                <section className="cities__map map" style={{backgroundImage: 'none'}}>
+                  <Map mapCenter={selectedOffer?.location || offersByCity[0].location} points={offersByCity}
+                    selectedPoint={selectedOffer}
+                  />
                 </section>
               </div>
             </div>
