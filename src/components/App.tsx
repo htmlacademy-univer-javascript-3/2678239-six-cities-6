@@ -5,7 +5,7 @@ import FavoritesPage from '../pages/FavoritesPage.tsx';
 import LoginPage from '../pages/LoginPage.tsx';
 import OfferPage from '../pages/OfferPage.tsx';
 import PrivateRoute from './PrivateRoute.tsx';
-import {AppRoute, AuthorizationStatus} from '../types/app.ts';
+import {AppRoute} from '../types/app.ts';
 import {comments} from '../mocks/comments.ts';
 
 
@@ -20,9 +20,7 @@ export default function App() {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
-            >
+            <PrivateRoute>
               <FavoritesPage />
             </PrivateRoute>
           }
