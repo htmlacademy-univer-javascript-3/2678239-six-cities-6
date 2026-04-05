@@ -9,3 +9,5 @@ export const setOffers = createAction<Offer[]>('setOffers');
 export const selectOffer = createAction<Offer | null>('selectOffer');
 
 export const setSort = createAction<SortTypes>('setSort');
+
+export const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');

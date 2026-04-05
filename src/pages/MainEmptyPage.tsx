@@ -1,6 +1,6 @@
 import Logo from '../components/Logo.tsx';
 import CitiesList from '../components/CitiesList.tsx';
-import {setCity} from '../state/action.ts';
+import {setCity} from '../store/action.ts';
 import {useAppDispatch, useAppSelector} from '../hooks/store.ts';
 
 

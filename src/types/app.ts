@@ -1,4 +1,4 @@
-import {store} from '../state';
+import {store} from '../store';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -9,6 +9,10 @@ export enum AppRoute {
   Favorites = '/favorites',
   Offer = '/offer/:id',
   Root = '/',
+}
+
+export enum APIRoute {
+  Offers = '/offers',
 }
 
 export enum AuthorizationStatus {
