@@ -19,7 +19,7 @@ type AppState = {
   sortType: SortTypes;
   isOffersLoading: boolean;
   authorizationStatus: AuthorizationStatus;
-  user: User | null
+  user: User | null;
 }
 
 const initialState: AppState = {
