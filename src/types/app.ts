@@ -1,4 +1,5 @@
 import {store} from '../store';
+import {AuthInfo} from './api.ts';
 
 export type State = ReturnType<typeof store.getState>;
 
@@ -13,6 +14,7 @@ export enum AppRoute {
 
 export enum APIRoute {
   Offers = '/offers',
+  Login = '/login',
 }
 
 export enum AuthorizationStatus {
@@ -20,3 +22,5 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export type User = Omit<AuthInfo, 'token'>;
