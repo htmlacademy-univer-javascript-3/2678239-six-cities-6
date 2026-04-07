@@ -37,7 +37,7 @@ export const getAuthorizationStatusAction = createAsyncThunk<void, undefined, {
     try {
       const {data} = await api.get<AuthInfo>(APIRoute.Login);
       saveUser(dispatch, data);
-    } catch (error) { /* empty */ }
+    } catch { /* empty */ }
   },
 );
 
@@ -51,6 +51,6 @@ export const authorizeAction = createAsyncThunk<void, AuthRequest, {
     try {
       const {data} = await api.post<AuthInfo>(APIRoute.Login, _arg);
       saveUser(dispatch, data);
-    } catch (error) { /* empty */ }
+    } catch { /* empty */ }
   },
 );
