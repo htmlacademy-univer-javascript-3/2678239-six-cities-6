@@ -44,17 +44,17 @@ export default function LoginPage() {
             <form className="login__form form" onSubmit={(event) => onSubmit(event)}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input className="login__input form__input" type="email" name="email" value={email}
+                <input className="login__input form__input" type="email" name="email" value={email} data-test-id="login-input"
                   onChange={(event) => setEmail(event.target.value)} placeholder="Email" required
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                <input className="login__input form__input" type="password" name="password" value={password}
+                <input className="login__input form__input" type="password" name="password" value={password} data-test-id="password-input"
                   onChange={(event) => setPassword(event.target.value)} placeholder="Password" required
                 />
               </div>
-              <button className="login__submit form__submit button" type="submit">Sign in</button>
+              <button className="login__submit form__submit button" data-test-id="submit-button" type="submit">Sign in</button>
             </form>
           </section>
           <section className="locations locations--login locations--current">
