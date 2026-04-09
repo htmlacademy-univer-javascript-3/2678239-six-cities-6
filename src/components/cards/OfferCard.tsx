@@ -25,7 +25,7 @@ export default function OfferCard({offer, onHover, onLeave, isNeighbour}: CardPr
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{offer.price}</b>
+            <b className="place-card__price-value" data-test-id="offer-price">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
@@ -40,7 +40,7 @@ export default function OfferCard({offer, onHover, onLeave, isNeighbour}: CardPr
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${offer.rating * 20}%`}}></span>
+            <span data-type-id="rating" style={{width: `${offer.rating * 20}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
