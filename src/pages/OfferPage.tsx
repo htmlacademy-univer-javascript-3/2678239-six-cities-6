@@ -84,7 +84,7 @@ export default function OfferPage({comments}: OfferPageProps) {
                 </div>
               )}
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">
+                <h1 className="offer__name" data-test-id='offer-page-title'>
                   {selectedOffer.title}
                 </h1>
                 <button

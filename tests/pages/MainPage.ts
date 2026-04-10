@@ -9,7 +9,11 @@ export class MainPage extends AbstractTestPage {
     this.sortTypesList = this.page.getByTestId('sort-types-list');
     this.prices = this.page.getByTestId('offer-price');
     this.ratings = this.page.getByTestId('rating');
+    this.offers = this.page.getByTestId('offer-card');
+    this.noOffersContainer = this.page.getByTestId('no-offers-container');
   }
+
+  public readonly offers: Locator;
 
   public readonly sortButton: Locator;
 
@@ -20,4 +24,7 @@ export class MainPage extends AbstractTestPage {
   public readonly sortTypesList: Locator;
 
   public readonly username: Locator;
+
+  public readonly noOffersContainer: Locator;
+
 }
