@@ -16,11 +16,7 @@ test.describe('sorting of offers is working', () => {
     const sortOption = mainPage.sortTypesList.getByText(SortTypeNames.get(SortTypes.PriceHighToLow)!);
     await sortOption.click();
 
-    const priceTexts = await mainPage.prices.allTextContents();
-
-    const prices = priceTexts.map((text) =>
-      Number(text.replace(/\D/g, ''))
-    );
+    const prices = await mainPage.getPrices();
 
     const sorted = [...prices].sort((a, b) => b - a);
 
@@ -31,11 +27,7 @@ test.describe('sorting of offers is working', () => {
     const sortOption = mainPage.sortTypesList.getByText(SortTypeNames.get(SortTypes.PriceLowToHigh)!);
     await sortOption.click();
 
-    const priceTexts = await mainPage.prices.allTextContents();
-
-    const prices = priceTexts.map((text) =>
-      Number(text.replace(/\D/g, ''))
-    );
+    const prices = await mainPage.getPrices();
 
     const sorted = [...prices].sort((a, b) => a - b);
 
@@ -46,8 +38,7 @@ test.describe('sorting of offers is working', () => {
     const sortOption = mainPage.sortTypesList.getByText(SortTypeNames.get(SortTypes.TopRated)!);
     await sortOption.click();
 
-    const ratings = await mainPage.ratings.evaluateAll((elements) =>
-      elements.map((elem) => +elem.style.width.replace(/\D/g, '')));
+    const ratings = await mainPage.getRatings();
 
     const sorted = [...ratings].sort((a, b) => b - a);
     expect(ratings).toEqual(sorted);

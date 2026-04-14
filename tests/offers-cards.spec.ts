@@ -7,10 +7,10 @@ test('offers list working', async ({page}) => {
   await mainPage.load();
 
   const offerPage = new OfferPage(page);
-
+  await mainPage.loader.waitFor({state: 'detached'});
   if (await mainPage.offers.count() !== 0) {
     const offers = await mainPage.offers.all();
-    const randIdx = Math.ceil(Math.random() * offers.length);
+    const randIdx = Math.floor(Math.random() * offers.length);
     const randOffer = offers[randIdx];
     const title = await randOffer.getByTestId('offer-title').textContent() ?? '';
 
@@ -18,6 +18,6 @@ test('offers list working', async ({page}) => {
 
     await expect(offerPage.title).toContainText(title);
   } else {
-    await mainPage.noOffersContainer.isVisible();
+    await expect(mainPage.noOffersContainer).toBeVisible();
   }
 });

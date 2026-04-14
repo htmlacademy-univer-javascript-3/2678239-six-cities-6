@@ -35,7 +35,7 @@ export default function MainPage() {
     <div className="page page--gray page--main">
       <Header />
       {isOffersLoading
-        ? <span className='loader'/>
+        ? <span className='loader' data-test-id="loader"/>
         :
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
